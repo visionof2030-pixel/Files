@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>🏆 لوحة المتصدرين - كأس العالم 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         /* ============================================================
            ROOT & RESET
@@ -555,15 +554,8 @@
             animation: pulseDot 1.5s infinite;
         }
         @keyframes pulseDot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.8);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
         }
 
         .empty-state {
@@ -602,14 +594,8 @@
             display: flex;
         }
         @keyframes fadeInModal {
-            from {
-                opacity: 0;
-                transform: scale(0.96);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
         .modal-content {
             background: var(--bg-secondary);
@@ -789,84 +775,26 @@
            استجابة
            ============================================================ */
         @media (max-width: 640px) {
-            body {
-                padding: 8px;
-            }
-            .header {
-                padding: 12px 16px;
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .header .actions {
-                justify-content: center;
-            }
-            .leaderboard-section {
-                padding: 16px;
-            }
-            .champion-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 12px;
-                padding: 16px 18px;
-            }
-            .champion-card .rank-badge {
-                font-size: 2.2rem;
-                min-width: auto;
-            }
-            .champion-card .avatar {
-                width: 56px;
-                height: 56px;
-                font-size: 1.4rem;
-            }
-            .champion-card .info .name {
-                justify-content: center;
-                font-size: 1rem;
-            }
-            .champion-card .info .stats-row {
-                justify-content: center;
-                gap: 12px;
-            }
-            .players-list {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            .player-card {
-                padding: 10px 12px;
-            }
-            .player-card .info-sm .name-sm {
-                font-size: 0.75rem;
-            }
-            .player-card .points-sm {
-                font-size: 0.7rem;
-                padding: 2px 10px;
-            }
-            .player-card .progress-mini {
-                width: 40px;
-            }
-            .modal-content {
-                padding: 16px;
-                max-width: 98%;
-            }
-            .player-stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                padding: 12px;
-            }
-            .player-prediction-item {
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-            .player-prediction-item .time {
-                font-size: 0.5rem;
-            }
-            .lb-period-tabs {
-                justify-content: center;
-            }
-            .lb-period-tabs .period-btn {
-                padding: 4px 12px;
-                font-size: 0.6rem;
-            }
+            body { padding: 8px; }
+            .header { padding: 12px 16px; flex-direction: column; align-items: stretch; text-align: center; }
+            .header .actions { justify-content: center; }
+            .leaderboard-section { padding: 16px; }
+            .champion-card { flex-direction: column; text-align: center; gap: 12px; padding: 16px 18px; }
+            .champion-card .rank-badge { font-size: 2.2rem; min-width: auto; }
+            .champion-card .avatar { width: 56px; height: 56px; font-size: 1.4rem; }
+            .champion-card .info .name { justify-content: center; font-size: 1rem; }
+            .champion-card .info .stats-row { justify-content: center; gap: 12px; }
+            .players-list { grid-template-columns: 1fr; gap: 8px; }
+            .player-card { padding: 10px 12px; }
+            .player-card .info-sm .name-sm { font-size: 0.75rem; }
+            .player-card .points-sm { font-size: 0.7rem; padding: 2px 10px; }
+            .player-card .progress-mini { width: 40px; }
+            .modal-content { padding: 16px; max-width: 98%; }
+            .player-stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+            .player-prediction-item { flex-wrap: wrap; gap: 8px; }
+            .player-prediction-item .time { font-size: 0.5rem; }
+            .lb-period-tabs { justify-content: center; }
+            .lb-period-tabs .period-btn { padding: 4px 12px; font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -915,7 +843,7 @@
             <button class="modal-close" id="playerModalCloseBtn">✕</button>
             <div class="modal-title" id="playerModalTitle">📋 توقعات اللاعب</div>
             <div id="playerModalSubtitle" class="modal-subtitle"></div>
-
+            
             <div class="player-stats-grid" id="playerStatsGrid">
                 <div class="stat-box">
                     <div class="stat-value gold" id="playerPoints">0</div>
@@ -979,7 +907,7 @@
         // ============================================================
         //  CACHE HELPERS
         // ============================================================
-        const CACHE_KEY = "wc_cache_v3";
+        const CACHE_KEY = "wc_cache_v2";
         const CACHE_TIME = 5 * 60 * 1000;
 
         function setCache(key, value) {
@@ -999,126 +927,64 @@
         }
 
         // ============================================================
-        //  TRANSLATION HELPERS (للأسماء فقط، وليس للمطابقة)
+        //  TRANSLATION HELPERS
         // ============================================================
         const nameMapping = {
-            "مکزیک": "المكسيك",
-            "Mexico": "المكسيك",
-            "مكسيك": "المكسيك",
-            "آفریقای جنوبی": "جنوب أفريقيا",
-            "South Africa": "جنوب أفريقيا",
-            "افریقای جنوبی": "جنوب أفريقيا",
-            "آرژانتین": "الأرجنتين",
-            "Argentina": "الأرجنتين",
-            "ارژانتین": "الأرجنتين",
-            "الجزایر": "الجزائر",
-            "Algeria": "الجزائر",
-            "الجزائر": "الجزائر",
-            "اتریش": "النمسا",
-            "Austria": "النمسا",
-            "اتریش": "النمسا",
-            "اردن": "الأردن",
-            "Jordan": "الأردن",
-            "اردن": "الأردن",
-            "پرتغال": "البرتغال",
-            "پرتقال": "البرتغال",
-            "Portugal": "البرتغال",
-            "کنگو دمکراتیک": "الكونغو الديمقراطية",
-            "جمهوری کنگو": "الكونغو الديمقراطية",
-            "DR Congo": "الكونغو الديمقراطية",
-            "کره جنوبی": "كوريا الجنوبية",
-            "South Korea": "كوريا الجنوبية",
-            "جمهوری چک": "التشيك",
-            "Czech Republic": "التشيك",
-            "چک": "التشيك",
-            "کانادا": "كندا",
-            "Canada": "كندا",
-            "بوسنی و هرزگوین": "البوسنة والهرسك",
-            "Bosnia and Herzegovina": "البوسنة والهرسك",
-            "آمریکا": "أمريكا",
-            "United States": "أمريكا",
-            "امریکا": "أمريكا",
-            "عراق": "العراق",
-            "Iraq": "العراق",
-            "العراق": "العراق",
-            "سوئیس": "سويسرا",
-            "Switzerland": "سويسرا",
-            "سویس": "سويسرا",
-            "قطر": "قطر",
-            "Qatar": "قطر",
-            "برزیل": "البرازيل",
-            "Brazil": "البرازيل",
-            "برزیل": "البرازيل",
-            "مراکش": "المغرب",
-            "Morocco": "المغرب",
-            "مراكش": "المغرب",
-            "هائیتی": "هايتي",
-            "Haiti": "هايتي",
-            "اسکاتلند": "إسكتلندا",
-            "Scotland": "إسكتلندا",
-            "استرالیا": "أستراليا",
-            "Australia": "أستراليا",
-            "ترکیه": "تركيا",
-            "Turkey": "تركيا",
-            "آلمان": "ألمانيا",
-            "Germany": "ألمانيا",
-            "کوراساو": "كوراساو",
-            "Curaçao": "كوراساو",
-            "ژاپن": "اليابان",
-            "Japan": "اليابان",
-            "هلند": "هولندا",
-            "Netherlands": "هولندا",
-            "اکوادور": "الإكوادور",
-            "Ecuador": "الإكوادور",
-            "ساحل عاج": "ساحل العاج",
-            "Ivory Coast": "ساحل العاج",
-            "سوئد": "السويد",
-            "Sweden": "السويد",
-            "تونس": "تونس",
-            "Tunisia": "تونس",
-            "اسپانیا": "إسبانيا",
-            "Spain": "إسبانيا",
-            "کیپ ورد": "الرأس الأخضر",
-            "Cape Verde": "الرأس الأخضر",
-            "مصر": "مصر",
-            "Egypt": "مصر",
-            "بلژیک": "بلجيكا",
-            "Belgium": "بلجيكا",
-            "عربستان سعودی": "السعودية",
-            "سعودی": "السعودية",
-            "Saudi Arabia": "السعودية",
-            "اروگوئه": "أوروغواي",
-            "Uruguay": "أوروغواي",
-            "ایران": "إيران",
-            "Iran": "إيران",
-            "نیوزیلند": "نيوزيلندا",
-            "New Zealand": "نيوزيلندا",
-            "سنگال": "السنغال",
-            "Senegal": "السنغال",
-            "فرانسه": "فرنسا",
-            "France": "فرنسا",
-            "نروژ": "النرويج",
-            "Norway": "النرويج",
-            "انگلستان": "إنجلترا",
-            "England": "إنجلترا",
-            "کرواسی": "كرواتيا",
-            "Croatia": "كرواتيا",
-            "پاناما": "بنما",
-            "Panama": "بنما",
-            "کلمبیا": "كولومبيا",
-            "Colombia": "كولومبيا",
-            "ازبکستان": "أوزبكستان",
-            "Uzbekistan": "أوزبكستان",
-            "غنا": "غانا",
-            "Ghana": "غانا",
-            "پاراگوئه": "باراغواي",
-            "Paraguay": "باراغواي"
+            "مکزیک": "المكسيك", "Mexico": "المكسيك", "مكسيك": "المكسيك",
+            "آفریقای جنوبی": "جنوب أفريقيا", "South Africa": "جنوب أفريقيا", "افریقای جنوبی": "جنوب أفريقيا",
+            "آرژانتین": "الأرجنتين", "Argentina": "الأرجنتين", "ارژانتین": "الأرجنتين",
+            "الجزایر": "الجزائر", "Algeria": "الجزائر", "الجزائر": "الجزائر",
+            "اتریش": "النمسا", "Austria": "النمسا", "اتریش": "النمسا",
+            "اردن": "الأردن", "Jordan": "الأردن", "اردن": "الأردن",
+            "پرتغال": "البرتغال", "پرتقال": "البرتغال", "Portugal": "البرتغال",
+            "کنگو دمکراتیک": "الكونغو الديمقراطية", "جمهوری کنگو": "الكونغو الديمقراطية", "DR Congo": "الكونغو الديمقراطية",
+            "کره جنوبی": "كوريا الجنوبية", "South Korea": "كوريا الجنوبية",
+            "جمهوری چک": "التشيك", "Czech Republic": "التشيك", "چک": "التشيك",
+            "کانادا": "كندا", "Canada": "كندا",
+            "بوسنی و هرزگوین": "البوسنة والهرسك", "Bosnia and Herzegovina": "البوسنة والهرسك",
+            "آمریکا": "أمريكا", "United States": "أمريكا", "امریکا": "أمريكا",
+            "عراق": "العراق", "Iraq": "العراق", "العراق": "العراق",
+            "سوئیس": "سويسرا", "Switzerland": "سويسرا", "سویس": "سويسرا",
+            "قطر": "قطر", "Qatar": "قطر",
+            "برزیل": "البرازيل", "Brazil": "البرازيل", "برزیل": "البرازيل",
+            "مراکش": "المغرب", "Morocco": "المغرب", "مراكش": "المغرب",
+            "هائیتی": "هايتي", "Haiti": "هايتي",
+            "اسکاتلند": "إسكتلندا", "Scotland": "إسكتلندا",
+            "استرالیا": "أستراليا", "Australia": "أستراليا",
+            "ترکیه": "تركيا", "Turkey": "تركيا",
+            "آلمان": "ألمانيا", "Germany": "ألمانيا",
+            "کوراساو": "كوراساو", "Curaçao": "كوراساو",
+            "ژاپن": "اليابان", "Japan": "اليابان",
+            "هلند": "هولندا", "Netherlands": "هولندا",
+            "اکوادور": "الإكوادور", "Ecuador": "الإكوادور",
+            "ساحل عاج": "ساحل العاج", "Ivory Coast": "ساحل العاج",
+            "سوئد": "السويد", "Sweden": "السويد",
+            "تونس": "تونس", "Tunisia": "تونس",
+            "اسپانیا": "إسبانيا", "Spain": "إسبانيا",
+            "کیپ ورد": "الرأس الأخضر", "Cape Verde": "الرأس الأخضر",
+            "مصر": "مصر", "Egypt": "مصر",
+            "بلژیک": "بلجيكا", "Belgium": "بلجيكا",
+            "عربستان سعودی": "السعودية", "سعودی": "السعودية", "Saudi Arabia": "السعودية",
+            "اروگوئه": "أوروغواي", "Uruguay": "أوروغواي",
+            "ایران": "إيران", "Iran": "إيران",
+            "نیوزیلند": "نيوزيلندا", "New Zealand": "نيوزيلندا",
+            "سنگال": "السنغال", "Senegal": "السنغال",
+            "فرانسه": "فرنسا", "France": "فرنسا",
+            "نروژ": "النرويج", "Norway": "النرويج",
+            "انگلستان": "إنجلترا", "England": "إنجلترا",
+            "کرواسی": "كرواتيا", "Croatia": "كرواتيا",
+            "پاناما": "بنما", "Panama": "بنما",
+            "کلمبیا": "كولومبيا", "Colombia": "كولومبيا",
+            "ازبکستان": "أوزبكستان", "Uzbekistan": "أوزبكستان",
+            "غنا": "غانا", "Ghana": "غانا",
+            "پاراگوئه": "باراغواي", "Paraguay": "باراغواي"
         };
 
         function translateToArabic(raw) {
             if (!raw) return "";
             let trimmed = raw.trim();
             if (nameMapping[trimmed]) return nameMapping[trimmed];
+            // Try case-insensitive
             let lower = trimmed.toLowerCase();
             for (let [key, value] of Object.entries(nameMapping)) {
                 if (key.toLowerCase() === lower) return value;
@@ -1128,54 +994,18 @@
 
         function getFlag(name) {
             const map = {
-                "المكسيك": "🇲🇽",
-                "جنوب أفريقيا": "🇿🇦",
-                "الأرجنتين": "🇦🇷",
-                "الجزائر": "🇩🇿",
-                "النمسا": "🇦🇹",
-                "الأردن": "🇯🇴",
-                "البرتغال": "🇵🇹",
-                "الكونغو الديمقراطية": "🇨🇩",
-                "كوريا الجنوبية": "🇰🇷",
-                "التشيك": "🇨🇿",
-                "كندا": "🇨🇦",
-                "البوسنة والهرسك": "🇧🇦",
-                "أمريكا": "🇺🇸",
-                "العراق": "🇮🇶",
-                "سويسرا": "🇨🇭",
-                "قطر": "🇶🇦",
-                "البرازيل": "🇧🇷",
-                "المغرب": "🇲🇦",
-                "هايتي": "🇭🇹",
-                "إسكتلندا": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-                "أستراليا": "🇦🇺",
-                "تركيا": "🇹🇷",
-                "ألمانيا": "🇩🇪",
-                "كوراساو": "🇨🇼",
-                "اليابان": "🇯🇵",
-                "هولندا": "🇳🇱",
-                "الإكوادور": "🇪🇨",
-                "ساحل العاج": "🇨🇮",
-                "السويد": "🇸🇪",
-                "تونس": "🇹🇳",
-                "إسبانيا": "🇪🇸",
-                "الرأس الأخضر": "🇨🇻",
-                "مصر": "🇪🇬",
-                "بلجيكا": "🇧🇪",
-                "السعودية": "🇸🇦",
-                "أوروغواي": "🇺🇾",
-                "إيران": "🇮🇷",
-                "نيوزيلندا": "🇳🇿",
-                "السنغال": "🇸🇳",
-                "فرنسا": "🇫🇷",
-                "النرويج": "🇳🇴",
-                "إنجلترا": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-                "كرواتيا": "🇭🇷",
-                "بنما": "🇵🇦",
-                "كولومبيا": "🇨🇴",
-                "أوزبكستان": "🇺🇿",
-                "غانا": "🇬🇭",
-                "باراغواي": "🇵🇾"
+                "المكسيك": "🇲🇽", "جنوب أفريقيا": "🇿🇦", "الأرجنتين": "🇦🇷", "الجزائر": "🇩🇿",
+                "النمسا": "🇦🇹", "الأردن": "🇯🇴", "البرتغال": "🇵🇹", "الكونغو الديمقراطية": "🇨🇩",
+                "كوريا الجنوبية": "🇰🇷", "التشيك": "🇨🇿", "كندا": "🇨🇦", "البوسنة والهرسك": "🇧🇦",
+                "أمريكا": "🇺🇸", "العراق": "🇮🇶", "سويسرا": "🇨🇭", "قطر": "🇶🇦",
+                "البرازيل": "🇧🇷", "المغرب": "🇲🇦", "هايتي": "🇭🇹", "إسكتلندا": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+                "أستراليا": "🇦🇺", "تركيا": "🇹🇷", "ألمانيا": "🇩🇪", "كوراساو": "🇨🇼",
+                "اليابان": "🇯🇵", "هولندا": "🇳🇱", "الإكوادور": "🇪🇨", "ساحل العاج": "🇨🇮",
+                "السويد": "🇸🇪", "تونس": "🇹🇳", "إسبانيا": "🇪🇸", "الرأس الأخضر": "🇨🇻",
+                "مصر": "🇪🇬", "بلجيكا": "🇧🇪", "السعودية": "🇸🇦", "أوروغواي": "🇺🇾",
+                "إيران": "🇮🇷", "نيوزيلندا": "🇳🇿", "السنغال": "🇸🇳", "فرنسا": "🇫🇷",
+                "النرويج": "🇳🇴", "إنجلترا": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "كرواتيا": "🇭🇷", "بنما": "🇵🇦",
+                "كولومبيا": "🇨🇴", "أوزبكستان": "🇺🇿", "غانا": "🇬🇭", "باراغواي": "🇵🇾"
             };
             return map[name] || "🏁";
         }
@@ -1201,7 +1031,7 @@
         }
 
         // ============================================================
-        //  LOAD DATA - تعديل هيكل المباريات
+        //  LOAD DATA
         // ============================================================
         async function loadPreviousGames() {
             const cached = getCache("games");
@@ -1214,18 +1044,13 @@
                 if (!res.ok) throw new Error("Network response was not ok");
                 const data = await res.json();
                 const finished = (data.games || []).filter(g => g.finished === "TRUE");
-
-                // تخزين المباريات بالهيكل الجديد مع ID
                 state.previousGamesData = finished.map(g => ({
-                    id: g.id || g.match_id || g.game_id || `game_${Date.now()}_${Math.random()}`,
-                    home: translateToArabic(g.home_team_name_en || g.home_team_name_fa || ''),
-                    away: translateToArabic(g.away_team_name_en || g.away_team_name_fa || ''),
+                    homeAr: translateToArabic(g.home_team_name_en || g.home_team_name_fa || ''),
+                    awayAr: translateToArabic(g.away_team_name_en || g.away_team_name_fa || ''),
                     homeScore: parseInt(g.home_score || 0),
                     awayScore: parseInt(g.away_score || 0),
-                    finished: g.finished === "TRUE",
                     sortTimestamp: new Date(g.local_date || '').getTime() || 0
                 }));
-
                 setCache("games", state.previousGamesData);
             } catch (e) {
                 console.warn("⚠️ فشل تحميل المباريات:", e);
@@ -1258,36 +1083,66 @@
         }
 
         // ============================================================
-        //  DETERMINE WINNER - يعتمد فقط على نتيجة المباراة
+        //  DETERMINE WINNER (مع دعم ركلات الترجيح والتعادل)
         // ============================================================
         function determineWinner(result) {
             if (!result) return null;
 
+            // إذا كانت هناك ركلات ترجيح
+            if (result.hadPenalties && result.homePenalty !== null && result.awayPenalty !== null) {
+                if (parseInt(result.homePenalty) > parseInt(result.awayPenalty)) {
+                    return result.homeAr;
+                } else if (parseInt(result.awayPenalty) > parseInt(result.homePenalty)) {
+                    return result.awayAr;
+                }
+                return null;
+            }
+
             if (result.homeScore > result.awayScore) {
-                return result.home;
+                return result.homeAr;
             } else if (result.awayScore > result.homeScore) {
-                return result.away;
+                return result.awayAr;
             }
             return null;
         }
 
         // ============================================================
-        //  FIND MATCH RESULT - يعتمد فقط على match_id
+        //  FIND MATCH RESULT
         // ============================================================
-        function findMatchResult(matchId) {
-            if (!matchId) return null;
-            return state.previousGamesData.find(m => m.id === matchId) || null;
+        function findMatchResult(team1, team2) {
+            let match = state.previousGamesData.find(m =>
+                (m.homeAr === team1 && m.awayAr === team2) || (m.homeAr === team2 && m.awayAr === team1)
+            );
+            if (match) {
+                return {
+                    homeScore: match.homeScore,
+                    awayScore: match.awayScore,
+                    homeAr: match.homeAr,
+                    awayAr: match.awayAr,
+                    homePenalty: match.homePenalty || null,
+                    awayPenalty: match.awayPenalty || null,
+                    hadPenalties: match.hadPenalties || false
+                };
+            }
+            return null;
         }
 
         // ============================================================
-        //  GET PREDICTION STATUS - يعتمد فقط على match_id
+        //  GET PREDICTION STATUS
         // ============================================================
         function getPredictionStatus(prediction) {
             if (!prediction || !prediction.match_id) {
                 return { status: 'pending', text: '⏳ مباراة غير معروفة' };
             }
 
-            const result = findMatchResult(prediction.match_id);
+            const parts = prediction.match_id.split('_');
+            if (parts.length < 3) {
+                return { status: 'pending', text: '⏳ بيانات غير مكتملة' };
+            }
+
+            const team1 = parts[1];
+            const team2 = parts[2];
+            const result = findMatchResult(team1, team2);
 
             if (!result) {
                 return { status: 'pending', text: '⏳ لم تلعب بعد' };
@@ -1295,7 +1150,6 @@
 
             const correctResult = determineWinner(result);
 
-            // التعادل
             if (!correctResult) {
                 if (prediction.prediction === 'DRAW') {
                     return { status: 'correct', text: '✅ صحيح (تعادل)' };
@@ -1304,7 +1158,6 @@
                 }
             }
 
-            // فوز فريق
             if (prediction.prediction === correctResult) {
                 return { status: 'correct', text: '✅ صحيح' };
             } else {
@@ -1313,7 +1166,7 @@
         }
 
         // ============================================================
-        //  RENDER LEADERBOARD - بدون أي parsing لأسماء الفرق
+        //  RENDER LEADERBOARD
         // ============================================================
         function setLeaderboardPeriod(period) {
             currentLeaderboardPeriod = period;
@@ -1329,19 +1182,12 @@
             const predictions = state.predictions || [];
             const games = state.previousGamesData || [];
 
-            if (!predictions.length) {
-                container.innerHTML =
-                `<div class="empty-state"><span class="icon">📭</span> لا توجد توقعات</div>`;
+            if (!predictions.length || !games.length) {
+                container.innerHTML = `<div class="empty-state"><span class="icon">📭</span> لا توجد بيانات كافية</div>`;
                 return;
             }
 
-            if (!games.length) {
-                container.innerHTML =
-                    `<div class="empty-state"><span class="icon">📭</span> لا توجد مباريات منتهية</div>`;
-                return;
-            }
-
-            // حساب النقاط لكل لاعب باستخدام match_id فقط
+            // حساب النقاط
             const scores = {};
             for (let p of predictions) {
                 if (!scores[p.user_name]) {
@@ -1349,7 +1195,12 @@
                 }
                 scores[p.user_name].total++;
 
-                const result = findMatchResult(p.match_id);
+                const parts = (p.match_id || "").split("_");
+                if (parts.length < 3) continue;
+                const team1 = parts[1],
+                    team2 = parts[2];
+                const result = findMatchResult(team1, team2);
+
                 if (!result) continue;
 
                 const winner = determineWinner(result);
@@ -1372,8 +1223,7 @@
             const board = Object.values(scores).sort((a, b) => b.points - a.points || (b.correct - a.correct));
 
             if (!board.length) {
-                container.innerHTML =
-                `<div class="empty-state"><span class="icon">📭</span> لا توجد توقعات صحيحة</div>`;
+                container.innerHTML = `<div class="empty-state"><span class="icon">📭</span> لا توجد توقعات صحيحة</div>`;
                 return;
             }
 
@@ -1486,7 +1336,7 @@
         }
 
         // ============================================================
-        //  OPEN PLAYER PREDICTIONS - بدون parsing
+        //  OPEN PLAYER PREDICTIONS (نافذة توقعات اللاعب)
         // ============================================================
         async function openPlayerPredictions(userName) {
             if (!userName) { showToast('⚠️ اسم المستخدم غير معروف'); return; }
@@ -1517,8 +1367,7 @@
             }
 
             if (!predictions.length) {
-                listContainer.innerHTML =
-                `<div class="empty-state"><span class="icon">📭</span> لا توجد توقعات لهذا اللاعب</div>`;
+                listContainer.innerHTML = `<div class="empty-state"><span class="icon">📭</span> لا توجد توقعات لهذا اللاعب</div>`;
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 return;
@@ -1552,7 +1401,11 @@
                 if (!allScores[p.user_name]) {
                     allScores[p.user_name] = { points: 0 };
                 }
-                const result = findMatchResult(p.match_id);
+                const parts = (p.match_id || "").split("_");
+                if (parts.length < 3) continue;
+                const team1 = parts[1],
+                    team2 = parts[2];
+                const result = findMatchResult(team1, team2);
                 if (!result) continue;
                 const winner = determineWinner(result);
                 let isCorrect = false;
@@ -1570,9 +1423,9 @@
             // عرض التوقعات
             let html = '';
             predictionsWithStatus.forEach((p, idx) => {
-                const result = findMatchResult(p.match_id);
-                const team1 = result ? result.home : '?';
-                const team2 = result ? result.away : '?';
+                const parts = p.match_id ? p.match_id.split('_') : [];
+                const team1 = parts.length > 1 ? parts[1] : '?';
+                const team2 = parts.length > 2 ? parts[2] : '?';
 
                 let predText = '';
                 if (p.prediction === 'DRAW') {
@@ -1600,7 +1453,6 @@
                     <div class="match-info">
                         <div class="teams">
                             <span class="flag">${getFlag(team1)}</span> ${team1} 🆚 <span class="flag">${getFlag(team2)}</span> ${team2}
-                            ${result ? `<span style="font-size:0.6rem;color:var(--text-muted);margin-right:8px;">(ID: ${p.match_id})</span>` : ''}
                         </div>
                         <div class="pred">🔮 ${predText}</div>
                         <span class="status ${statusClass}">${statusText}</span>
@@ -1670,7 +1522,7 @@
         //  INIT
         // ============================================================
         async function init() {
-            console.log("🚀 بدء تحميل لوحة المتصدرين (بنظام match_id الجديد)");
+            console.log("🚀 بدء تحميل لوحة المتصدرين");
             await Promise.all([
                 loadPreviousGames(),
                 getAllPredictions()
